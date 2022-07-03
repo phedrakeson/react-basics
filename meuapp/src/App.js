@@ -28,7 +28,7 @@ const mario = {
 };
 
 const App = () => {
-  const dados = luana;
+  const dados = mario;
   const situacao = {
     color: dados.ativa ? 'green' : 'red'
   };
@@ -44,6 +44,7 @@ const App = () => {
       <p>Idade: {dados.idade}</p>
       <p >Situação: <span style={situacao}>{dados.ativa ? 'Ativa' : 'Inativa'}</span></p>
       <p>Total gasto: {totalGasto()}</p>
+      <p style={{ color: 'red' }}>{totalGasto() > 10000 ? 'Excedeu o limite de compras!' : ''}</p>
     </>
   );
 };
