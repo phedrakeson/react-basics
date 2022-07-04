@@ -5,6 +5,7 @@ import Array from './Array';
 import Header from './desafio-componentes/Header';
 import Home from './desafio-componentes/Home';
 import Produtos from './desafio-componentes/Produtos';
+import UseEffectDesafio from './desafio-useeffect/UseEffectDesafio';
 import UseStateDesafio from './desafio-usestate/UseStateDesafio';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,7 @@ const Pagina = () => {
 
 root.render(
   <React.StrictMode>
+    <UseEffectDesafio />
     <UseStateDesafio />
     <App />
     <Array />
