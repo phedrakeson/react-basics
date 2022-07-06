@@ -1,4 +1,5 @@
 import React from "react";
+import { GlobalContext } from "./GlobalContext";
 
 // Mostre os dados da aplicação, como aprensetado no vídeo
 // Não utilize CSS externo, use o style para mudar as cores
@@ -28,21 +29,25 @@ const mario = {
 };
 
 const App = () => {
-  const dados = luana;
+  const { dados, limparDados } = React.useContext(GlobalContext);
+  const dados2 = luana;
   const situacao = {
-    color: dados.ativa ? 'green' : 'red'
+    color: dados2.ativa ? 'green' : 'red'
   };
 
   const totalGasto = () => {
-    const compras = dados.compras.map(compra => Number(compra.preco.replace('R$', '').trim()));
+    const compras = dados2.compras.map(compra => Number(compra.preco.replace('R$', '').trim()));
     return compras.reduce((x, y) => x + y);
   }
 
   return (
     <>
-      <p>Cliente: {dados.cliente}</p>
-      <p>Idade: {dados.idade}</p>
-      <p >Situação: <span style={situacao}>{dados.ativa ? 'Ativa' : 'Inativa'}</span></p>
+      {dados.map(d => (
+        <p>{d.nome}</p>
+      ))}
+      <p>Cliente: {dados2.cliente}</p>
+      <p>Idade: {dados2.idade}</p>
+      <p >Situação: <span style={situacao}>{dados2.ativa ? 'Ativa' : 'Inativa'}</span></p>
       <p>Total gasto: {totalGasto()}</p>
       {totalGasto() > 10000 && <p style={{ color: 'red' }}>Excedeu o limite de compras!</p>}
     </>
