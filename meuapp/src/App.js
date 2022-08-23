@@ -1,5 +1,7 @@
 import React from "react";
 import { GlobalContext } from "./GlobalContext";
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import Array from "./Array";
 
 // Mostre os dados da aplicação, como aprensetado no vídeo
 // Não utilize CSS externo, use o style para mudar as cores
@@ -41,7 +43,12 @@ const App = () => {
   }
 
   return (
-    <>
+    <BrowserRouter>
+      <NavLink to='/' end>Página inicial</NavLink>
+      <NavLink to='sobre'>Sobre</NavLink>
+      <Routes>
+        <Route path="''" element={<Array />} />
+      </Routes>
       {dados.map(d => (
         <p>{d.nome}</p>
       ))}
@@ -50,7 +57,7 @@ const App = () => {
       <p >Situação: <span style={situacao}>{dados2.ativa ? 'Ativa' : 'Inativa'}</span></p>
       <p>Total gasto: {totalGasto()}</p>
       {totalGasto() > 10000 && <p style={{ color: 'red' }}>Excedeu o limite de compras!</p>}
-    </>
+    </BrowserRouter>
   );
 };
 
